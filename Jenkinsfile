@@ -2,27 +2,28 @@ pipeline {
     agent any
 
     stages {
-        stage('Clonar Repositorio') {
+        stage('Copiar código fuente') {
             steps {
-                echo 'Usando repositorio local /var/lib/jenkins/app'
+                sh 'cp -r /var/lib/jenkins/app/* ./'
+                sh 'mkdir -p reporte'
             }
         }
 
         stage('SAST - Semgrep') {
             steps {
-                sh 'semgrep scan --config=auto /var/lib/jenkins/app > /var/lib/jenkins/reporte/semgrep-report.txt || true'
+                sh 'semgrep scan --config=auto . > reporte/semgrep-report.txt || true'
             }
         }
 
         stage('SBOM - Syft') {
             steps {
-                sh 'syft dir:/var/lib/jenkins/app -o json > /var/lib/jenkins/reporte/syft-sbom.json || true'
+                sh 'syft dir:. -o json > reporte/syft-sbom.json || true'
             }
         }
 
         stage('SCA - Grype') {
             steps {
-                sh 'grype dir:/var/lib/jenkins/app -o table > /var/lib/jenkins/reporte/grype-report.txt || true'
+                sh 'grype dir:. -o table > reporte/grype-report.txt || true'
             }
         }
     }
