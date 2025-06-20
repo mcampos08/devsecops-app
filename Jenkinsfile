@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Copiar código fuente') {
+        stage('Preparar entorno') {
             steps {
                 sh 'cp -r /var/lib/jenkins/app/* ./'
                 sh 'mkdir -p reporte'
@@ -24,6 +24,12 @@ pipeline {
         stage('SCA - Grype') {
             steps {
                 sh 'grype dir:. -o table > reporte/grype-report.txt || true'
+            }
+        }
+
+        stage('Copiar reportes') {
+            steps {
+                sh 'cp -r reporte/* /var/lib/jenkins/app/reporte/'
             }
         }
     }
