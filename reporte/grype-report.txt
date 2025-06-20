@@ -1,0 +1,6 @@
+NAME                     INSTALLED  FIXED-IN  TYPE          VULNERABILITY        SEVERITY  EPSS%  RISK  
+symfony/http-foundation  v2.0.25    2.8.52    php-composer  GHSA-xhh6-956q-4q69  High      85.30    2.1  
+symfony/http-foundation  v2.0.25    5.4.46    php-composer  GHSA-mrqx-rp3w-jpjp  Low       24.22  < 0.1  
+symfony/http-foundation  v2.0.25    2.3.19    php-composer  GHSA-v77v-x634-9m56  High        N/A    N/A  
+symfony/http-foundation  v2.0.25    2.3.19    php-composer  GHSA-h7v2-2qwg-h829  Medium      N/A    N/A  
+symfony/http-foundation  v2.0.25    2.3.27    php-composer  GHSA-p684-f7fh-jv2j  Medium      N/A    N/A
