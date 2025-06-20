@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('Preparar entorno') {
             steps {
-                sh 'cp -r /var/lib/jenkins/app/* ./'
-                sh 'mkdir -p reporte'
+                sh 'cp -r /var/lib/jenkins/app/* ./ || true'
             }
         }
 
